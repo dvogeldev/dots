@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	ffmpeg="ffmpeg -hide_banner" \
+	mkd="mkdir -pv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	yt="youtube-dl --add-metadata -i" \
+	yta="yt -x -f bestaudio/best"
+
+# Colorize commands when possible.
+alias \
+	ccat="highlight --out-format=ansi" \
+	diff="diff --color=auto" \
+	grep="grep --color=auto"
+
+# Program shortcuts
+alias \
+	cat='bat' \
+	l='exa --group-directories-first' \
+	la='exa -lag --group-directories-first' \
+	ll='exa -lg --group-directories-first' \
+	lm='exa -lgs modified --group-directories-first' \
+	ls='exa --long' \
+	v='nvim'
+
+# Git
+alias \
+	gall='git add .' \
+	gcom='git commit -m' \
+	gf='git fetch' \
+	gph='git push' \
+	gpl='git pull' \
+	gs='git status'
+
+# Chezmo
+alias \
+	chea='chezmoi add' \
+	cheap='chezmoi apply' \
+	chec='chezmoi cd' \
+	ched='chezmoi diff' \
+	chee='chezmoi edit' \
+	chem='chezmoi managed' \
+	chet='chezmoi add -T' \
+	cheu='chezmoi update'
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	e="$EDITOR" \
+	f="$FILE" \
+	g="git" \
+	ka="killall" \
+	mirror="sudo reflector --country 'United States' --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist" \
+	p="sudo pacman" \
+	sdn="sudo shutdown -h now" \
+	trem="transmission-remote" \
+	v="$EDITOR" \
+	yt="youtube-viewer" \
+	z="zathura"
+
+# Utilities
+alias \
+	cl="clear" \
+	cls="clear & exa"
+
+alias \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \

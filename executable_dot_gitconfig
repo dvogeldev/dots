@@ -1,0 +1,8 @@
+[user]
+	email = dvogel@fastmail.com
+	name = David Vogel
+	signingkey = AA433486035A7493944145BE286070A95F700555
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

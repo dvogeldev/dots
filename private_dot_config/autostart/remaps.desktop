@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Remaps
+Exec=/home/david/.local/bin/remaps
+Type=Application
+Categories=Utility

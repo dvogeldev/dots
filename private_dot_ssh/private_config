@@ -1,0 +1,19 @@
+Host *
+  IdentityFile ~/.ssh/id_rsa
+
+Host dvtp
+	HostName 192.168.0.205
+	User root
+Host dv-tp
+	HostName 192.168.0.205
+	User david
+Host dv-pc
+	HostName 192.168.0.210
+	User david
+Host dv-mbp
+	HostName 192.168.0.200
+	User dvogel
+Host gatmail
+	HostName 155.138.194.162
+	User root
+	IdentityFile ~/.ssh/id_ed25519

@@ -1,0 +1,6 @@
+alias ls exa -al --color=always --group-directories-first
+alias ff find-file $1
+alias doomsync ~/.config/emacs/bin/doom sync
+alias doomdoctor ~/.config/emacs/bin/doom doctor
+alias doomupgrade ~/.config/emacs/bin/doom upgrade
+alias doompurge ~/.config/emacs/bin/doom purge

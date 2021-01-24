@@ -33,7 +33,7 @@ alias \
 alias \
 	sai='sudo apt install -y' \
 	sau='sudo apt update && sudo apt upgrade' \
-	sal='sudo apt list"
+	sal='sudo apt list'
 
 # Git
 alias \

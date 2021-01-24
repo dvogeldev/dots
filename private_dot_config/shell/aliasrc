@@ -38,6 +38,14 @@ alias \
 	gpl='git pull' \
 	gs='git status'
 
+# Pass (Password Manager)
+alias \
+	pp='pass git push' \
+	pl='pass list' \
+	pr='pass rm' \
+	pi='pass insert' \
+	pe='pass edit'
+
 # Chezmo
 alias \
 	chea='chezmoi add' \

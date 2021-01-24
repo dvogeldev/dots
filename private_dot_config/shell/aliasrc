@@ -50,6 +50,7 @@ alias \
 	pl='pass list' \
 	pr='pass rm' \
 	pi='pass insert' \
+	pu='pass git pull' \
 	pe='pass edit'
 
 # Chezmo

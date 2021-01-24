@@ -7,7 +7,6 @@
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
-export PATH="$PATH:$CARGO_HOME/bin"
 
 # Default programs:
 export EDITOR="nvim"
@@ -141,4 +140,7 @@ ex=🎯:\
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
-source "/home/david/.local/share/cargo/env"
+
+# Cargo specifics
+export PATH="$PATH:$CARGO_HOME/bin"
+source "$CARGO_HOME/env"

@@ -81,7 +81,8 @@ alias \
 # Utilities
 alias \
 	cl="clear" \
-	cls="clear & exa"
+	cls="clear & exa" \
+	logout="pkill -9 -1"
 
 alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \

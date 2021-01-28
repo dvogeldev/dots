@@ -82,7 +82,21 @@ alias \
 alias \
 	cl="clear" \
 	cls="clear & exa" \
-	logout="kill -9 -1"
+	logout="kill -9 -1" \
+	dpi="sudo dpkg -i"
+
+# Jumps
+alias \
+	prj="cd $HOME/Projects" \
+	gat="prj gat" \
+	dwn="cd $HOME/Downloads"
+
+# Configs
+alias \
+	ea="chee $HOME/.config/shell/aliasrc" \
+	ez="chee $HOME/.config/zsh/.zshrc" \
+	ex="chee $HOME/.config/regolith/Xresources" \
+	ep="chee $HOME/.config/shell/profile"
 
 alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \

@@ -89,6 +89,7 @@ alias \
 alias \
 	prj="cd $HOME/Projects" \
 	gat="prj gat" \
+	ktc="prj ktc" \
 	dwn="cd $HOME/Downloads"
 
 # Configs

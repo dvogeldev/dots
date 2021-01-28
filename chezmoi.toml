@@ -1,0 +1,5 @@
+[sourceVCS]
+  autoCommit = true
+  autoPush = true
+[user]
+  email = "dvogel@fastmail.com"

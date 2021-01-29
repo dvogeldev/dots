@@ -81,6 +81,7 @@ alias \
 # Utilities
 alias \
 	cl="clear" \
+	cll="clear & exa -lh" \
 	cls="clear & exa" \
 	logout="kill -9 -1" \
 	dpi="sudo dpkg -i"

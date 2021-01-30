@@ -89,8 +89,8 @@ alias \
 # Jumps
 alias \
 	prj="cd $HOME/Projects" \
-	gat="prj /gatshack" \
-	ktc="prj /ktc" \
+	gat="cd $HOME/Projects/gatshack" \
+	ktc="cd $HOME/Projects/ktc" \
 	dwn="cd $HOME/Downloads"
 
 # Configs

@@ -38,7 +38,7 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 #export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 #export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
-export PROJECTS="$HOME/projects"
+export PROJECTS="$HOME/Projects"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"

@@ -80,6 +80,10 @@ alias \
 
 # Utilities
 alias \
+	..="cd .." \
+	...="cd ../.." \
+	....="cd ../../.." \
+	.....="cd ../../../.." \
 	cl="clear" \
 	cll="clear & exa -lh" \
 	cls="clear & exa" \
@@ -100,6 +104,13 @@ alias \
 	ez="chee $HOME/.config/zsh/.zshrc" \
 	ex="chee $HOME/.config/regolith/Xresources" \
 	ep="chee $HOME/.config/shell/profile"
+
+# Lando
+alias \
+	lani="lando init" \
+	lanr="lando rebuild -y" \
+	lans="lando start" \
+	lanh="lando --info"
 
 alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \

@@ -96,12 +96,9 @@ alias \
 	prj="cd $HOME/Projects" \
 	gat="cd $HOME/Projects/gat" \
 	ktc="cd $HOME/Projects/ktc" \
-<<<<<<< HEAD
 	vids="cd $HOME/Videos" \
 	repos="cd /data/repos" \
-=======
 	vid="cd $HOME/Videos" \
->>>>>>> 45840e63e6ffca5361e56135f3dca9b0a93a66a7
 	dwn="cd $HOME/Downloads"
 
 # Configs

@@ -68,6 +68,7 @@ alias \
 alias \
 	e="$EDITOR" \
 	f="$FILE" \
+	em="emacsclient -c" \
 	g="git" \
 	ka="killall" \
 	mirror="sudo reflector --country 'United States' --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist" \

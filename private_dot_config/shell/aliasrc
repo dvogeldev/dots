@@ -109,6 +109,12 @@ alias \
 	ex="chee $HOME/.config/regolith/Xresources" \
 	ep="chee $HOME/.config/shell/profile"
 
+# Pacman
+alias \
+	p="sudo pacman"\
+	pr="sudo pacman -Rcns"\
+	pu="sudo pacman -Syu"
+
 # Lando
 alias \
 	lani="lando init" \

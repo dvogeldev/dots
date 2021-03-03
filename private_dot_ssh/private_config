@@ -2,16 +2,13 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 
 Host dvtp
-	HostName 192.168.0.205
+	HostName 192.168.1.205
 	User root
-Host dv-tp
-	HostName 192.168.0.205
-	User david
-Host dv-pc
-	HostName 192.168.0.210
+Host dvpc
+	HostName 192.168.1.210
 	User david
 Host dv-mbp
-	HostName 192.168.0.200
+	HostName 192.168.1.200
 	User dvogel
 Host gatmail
 	HostName 155.138.194.162

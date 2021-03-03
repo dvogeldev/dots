@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-*.alpha: 0.98
+*.alpha: 1.0
 
 !! Set a default font and font size as below:
 
@@ -212,55 +212,96 @@
 /* *color20:      base04 */
 /* *color21:      base06 */
 
-! Special
+/* ! Special */
+/*
+/* *.foreground:   #bfbab0 */
+/* *.background:   #1f2430 */
+/* *.cursorColor:  #ffcc66 */
+/*
+/* ! Black */
+/*
+/* *.color0:       #1f2430 */
+/* *.color8:       #292b30 */
+/*
+/* ! Red */
+/*
+/* *.color1:       #ff3333 */
+/* *.color9:       #ff6666 */
+/*
+/* ! Green */
+/*
+/* *.color2:       #bae67e */
+/* *.color10:      #cee6ac */
+/*
+/* ! Yellow */
+/*
+/* *.color3:       #ffd580 */
+/* *.color11:      #ffe6b3 */
+/*
+/* ! Blue */
+/*
+/* *.color4:       #73d0ff */
+/* *.color12:      #a6e1ff */
+/*
+/* ! Magenta */
+/*
+/* *.color5:       #f28779 */
+/* *.color13:      #ffd6da */
+/*
+/* ! Cyan */ */
+/*
+/* *.color6:       #95e6cb */
+/* *.color14:      #ffffff */
+/*
+/* ! White */
+/*
+/* *.color7:       #ffffff */
+/* *.color15:      #ffffff */
+/*
+/*
+/* ! Bold, Italic, Underline */
+/*
+/* *.colorBD:     #e6e1cf */
+/* !*.colorIT: */
+/* !*.colorUL: */
 
-*.foreground:   #bfbab0
-*.background:   #1f2430
-*.cursorColor:  #ffcc66
+#define bg    #292d3e
+#define fg    #bfc7d5
+#define curs  #bfc7d5
+#define blk   #292d3e
+#define bblk  #676e95
+#define red   #f07178
+#define grn   #c3e88d
+#define ylw   #ffcb6b
+#define blu   #82aaff
+#define mag   #c792ea
+#define cyn   #89ddff
+#define wht   #bfc7d5
+#define bred  #f07178
+#define bgrn  #c3e88d
+#define bylw  #ffcb6b
+#define bblu  #82aaff
+#define bmag  #c792ea
+#define bcyn  #89ddff
+#define bwht  #959dcb
 
-! Black
+*background:   bg
+*foreground:   fg
+*cursorColor:  curs
 
-*.color0:       #1f2430
-*.color8:       #292b30
-
-! Red
-
-*.color1:       #ff3333
-*.color9:       #ff6666
-
-! Green
-
-*.color2:       #bae67e
-*.color10:      #cee6ac
-
-! Yellow
-
-*.color3:       #ffd580
-*.color11:      #ffe6b3
-
-! Blue
-
-*.color4:       #73d0ff
-*.color12:      #a6e1ff
-
-! Magenta
-
-*.color5:       #f28779
-*.color13:      #ffd6da
-
-! Cyan
-
-*.color6:       #95e6cb
-*.color14:      #ffffff
-
-! White
-
-*.color7:       #ffffff
-*.color15:      #ffffff
-
-
-! Bold, Italic, Underline
-
-*.colorBD:     #e6e1cf
-!*.colorIT:
-!*.colorUL:
+*color0:      blk
+*color8:      bblk
+*color1:      red
+*color9:      bred
+*color2:      grn
+*color10:     bgrn
+*color3:      ylw
+*color11:     bylw
+*color4:      blu
+*color12:     bblu
+*color5:      mag
+*color13:     bmag
+*color6:      cyn
+*color14:     bcyn
+*color7:      wht
+*color15:     bwht

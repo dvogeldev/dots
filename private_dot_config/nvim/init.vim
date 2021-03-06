@@ -16,7 +16,7 @@ Plug 'bling/vim-airline'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
-Plug 'drewtempelmeyer/palenight.vim'
+"Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 colorscheme nord

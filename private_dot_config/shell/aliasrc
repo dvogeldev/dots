@@ -105,6 +105,7 @@ alias \
 alias \
 	ea="chee $HOME/.config/shell/aliasrc" \
 	ep="chee $HOME/.config/shell/profile" \
+	ex="chee $HOME/.config/x11/xprofile" \
 	ev="chee $HOME/.config/nvim/init.vim" \
 	ez="chee $HOME/.config/zsh/.zshrc"
 

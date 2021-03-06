@@ -104,9 +104,9 @@ alias \
 # Configs
 alias \
 	ea="chee $HOME/.config/shell/aliasrc" \
-	ez="chee $HOME/.config/zsh/.zshrc" \
-	ex="chee $HOME/.config/regolith/Xresources" \
-	ep="chee $HOME/.config/shell/profile"
+	ep="chee $HOME/.config/shell/profile" \
+	ev="chee $HOME/.config/nvim/init.vim" \
+	ez="chee $HOME/.config/zsh/.zshrc"
 
 # Pacman
 alias \
@@ -115,7 +115,7 @@ alias \
 	pu="sudo pacman -Syu"
 
 # Lando
-alias \
+alias
 	lani="lando init" \
 	lanr="lando rebuild -y" \
 	lans="lando start" \

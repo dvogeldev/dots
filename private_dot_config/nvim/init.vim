@@ -18,7 +18,7 @@ Plug 'ap/vim-css-color'
 Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
-colorscheme palenight
+colorscheme nord
 
 set title
 set bg=dark

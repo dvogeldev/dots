@@ -1,3 +1,4 @@
+
 #!/bin/sh
 
 # Use neovim for vim if present.
@@ -34,15 +35,6 @@ alias \
 	sai='sudo apt install -y' \
 	sau='sudo apt update && sudo apt upgrade' \
 	sal='sudo apt list'
-
-# DNF
-alias \
-	sdar='sudo dnf autoremove' \
-	sdi='sudo dnf install'\
-	sdr='sudo dnf remove' \
-	sds='sudo dnf search' \
-	sdu='sudo dnf upgrade'
-
 
 # Git
 alias \

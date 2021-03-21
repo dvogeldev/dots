@@ -1,0 +1,23 @@
+# Hosts with dash is root login where allowed
+Host *
+  IdentityFile ~/.ssh/id_rsa
+
+Host dv-tp
+	HostName 192.168.1.205
+	User root
+Host dvtp
+	HostName 192.168.1.205
+	User david
+Host dv-pc
+	HostName 192.168.1.210
+	User root
+Host dvpc
+	HostName 192.168.1.210
+	User david
+Host dv-mbp
+	HostName 192.168.1.200
+	User dvogel
+Host gatmail
+	HostName 155.138.194.162
+	User root
+	IdentityFile ~/.ssh/id_ed25519

@@ -1,0 +1,112 @@
+! X colors.
+/* *foreground:        #ebb2b7 */
+/* *background:        #0C0201 */
+/* *.foreground:       #ebb2b7 */
+/* *.background:       #0C0201 */
+emacs*foreground:   #ebb2b7
+emacs*background:   #0C0201
+URxvt*foreground:   #ebb2b7
+XTerm*foreground:   #ebb2b7
+UXTerm*foreground:  #ebb2b7
+URxvt*background:   [100]#0C0201
+XTerm*background:   #0C0201
+UXTerm*background:  #0C0201
+URxvt*cursorColor:  #ebb2b7
+XTerm*cursorColor:  #ebb2b7
+UXTerm*cursorColor: #ebb2b7
+URxvt*borderColor:  [100]#0C0201
+
+/* ! Colors 0-15. */
+/* *.color0: #0C0201 */
+/* *color0:  #0C0201 */
+/* *.color1: #0E0A4B */
+/* *color1:  #0E0A4B */
+/* *.color2: #BD5758 */
+/* *color2:  #BD5758 */
+/* *.color3: #B48D62 */
+/* *color3:  #B48D62 */
+/* *.color4: #C39D60 */
+/* *color4:  #C39D60 */
+/* *.color5: #F7877E */
+/* *color5:  #F7877E */
+/* *.color6: #DE6C82 */
+/* *color6:  #DE6C82 */
+/* *.color7: #ebb2b7 */
+/* *color7:  #ebb2b7 */
+/* *.color8: #a47c80 */
+/* *color8:  #a47c80 */
+/* *.color9: #0E0A4B */
+/* *color9:  #0E0A4B */
+/* *.color10: #BD5758 */
+/* *color10:  #BD5758 */
+/* *.color11: #B48D62 */
+/* *color11:  #B48D62 */
+/* *.color12: #C39D60 */
+/* *color12:  #C39D60 */
+/* *.color13: #F7877E */
+/* *color13:  #F7877E */
+/* *.color14: #DE6C82 */
+/* *color14:  #DE6C82 */
+/* *.color15: #ebb2b7 */
+/* *color15:  #ebb2b7 */
+
+! Black color that will not be affected by bold highlighting.
+/* *.color66: #0C0201 */
+/* *color66:  #0C0201 */
+
+! Xclock colors.
+XClock*foreground: #ebb2b7
+XClock*background: #0C0201
+XClock*majorColor:  rgba:eb/b2/b7/ff
+XClock*minorColor:  rgba:eb/b2/b7/ff
+XClock*hourColor:   rgba:eb/b2/b7/ff
+XClock*minuteColor: rgba:eb/b2/b7/ff
+XClock*secondColor: rgba:eb/b2/b7/ff
+
+! Set depth to make transparency work.
+URxvt*depth: 32 */
+
+Xcursor.theme:	WhiteSur-cursors */
+
+! Palenight theme
+! 
+#define bg    #292d3e
+#define fg    #bfc7d5
+#define curs  #bfc7d5
+#define blk   #292d3e
+#define bblk  #676e95
+#define red   #f07178
+#define grn   #c3e88d
+#define ylw   #ffcb6b
+#define blu   #82aaff
+#define mag   #c792ea
+#define cyn   #89ddff
+#define wht   #bfc7d5
+#define bred  #f07178
+#define bgrn  #c3e88d
+#define bylw  #ffcb6b
+#define bblu  #82aaff
+#define bmag  #c792ea
+#define bcyn  #89ddff
+#define bwht  #959dcb
+
+*background:   bg
+*foreground:   fg
+*cursorColor:  curs
+
+*color0:      blk
+*color8:      bblk
+*color1:      red
+*color9:      bred
+*color2:      grn
+*color10:     bgrn
+*color3:      ylw
+*color11:     bylw
+*color4:      blu
+*color12:     bblu
+*color5:      mag
+*color13:     bmag
+*color6:      cyn
+*color14:     bcyn
+*color7:      wht
+*color15:     bwht

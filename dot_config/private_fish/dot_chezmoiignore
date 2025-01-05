@@ -1,0 +1,12 @@
+# Ignore fish shell history files
+fish_history*
+fish_read_history
+
+# Ignore fish variables (machine-specific)
+fish_variables
+
+# Ignore fish-generated completions
+fish_generated_completions/
+
+# Ignore fishd (fish server daemon) directory
+fishd/

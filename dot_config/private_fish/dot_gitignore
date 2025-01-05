@@ -1,0 +1,27 @@
+# Ignore Fish shell configuration directory
+.fish/
+
+# Ignore Fish shell history
+.fish_history
+
+# Ignore Fish shell universal variables
+.config/fish/fish_variables
+
+# Ignore Fish shell functions (if you have a separate directory for them)
+functions/
+
+# Ignore Fish shell completions (if you have a separate directory for them)
+completions/
+
+# Ignore any local overrides or custom configurations
+local.fish
+*.local.fish
+
+# Ignore any temporary files
+*.swp
+*.swo
+*.tmp
+
+# Ignore any editor-specific files
+.vscode/
+.idea/

@@ -1,0 +1,122 @@
+
+# ~/.config/starship.toml
+
+# Use custom format
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
+# Enable the username module
+[username]
+show_always = true
+style_user = "bold green"
+style_root = "bold red"
+format = "[$user]($style) "
+
+# Enable the hostname module
+[hostname]
+ssh_only = false
+format = "[$hostname]($style) "
+style = "bold dimmed green"
+
+# Enable the directory module
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold blue"
+
+# Enable the git_branch module
+[git_branch]
+format = "[$branch]($style) "
+style = "bold purple"
+
+# Enable the git_commit module
+[git_commit]
+format = "[$hash]($style) "
+style = "bold yellow"
+
+# Enable the git_state module
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+style = "bold yellow"
+
+# Enable the git_status module
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold yellow"
+
+# Enable the cmd_duration module
+[cmd_duration]
+format = "[$duration]($style) "
+style = "bold yellow"
+
+# Enable the jobs module
+[jobs]
+format = "[$number]($style) "
+style = "bold yellow"
+
+# Enable the battery module
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+# Enable the time module
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "bold yellow"
+
+# Enable the status module
+[status]
+format = "[$symbol$status]($style) "
+style = "bold red"
+
+# Enable the os module
+[os]
+format = "[$name]($style) "
+style = "bold yellow"
+
+# Enable the container module
+[container]
+format = "[$name]($style) "
+style = "bold yellow"
+
+# Enable the shell module
+[shell]
+format = "[$indicator]($style) "
+style = "bold yellow"
+
+# Enable the character module
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"

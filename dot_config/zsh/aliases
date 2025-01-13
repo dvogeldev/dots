@@ -13,10 +13,11 @@ alias .....='cd ../../../..'
 # Convenience aliases
 alias exa='eza'
 alias fm='yazi' # File manager
+alias t='tmux'
 alias cd='z'  # Zoxide for faster directory navigation
 
 # Edit Configs
-alias ea='nvim ~/.config/fish/aliases.fish'
+alias ea='nvim ~/.config/zsh/aliases'
 alias ef='nvim ~/.config/fish/config.fish'
 alias ev='nvim ~/.config/nvim'
 alias ez='nvim ~/.config/zsh'

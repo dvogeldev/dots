@@ -1,0 +1,68 @@
+
+# ~~~~~~~~~~~~~~~ Interactive shell ~~~~~~~~~~
+# Ensure Zsh is configured as the interactive shell
+
+[[ -o interactive ]] && export ZSH_INTERACTIVE=true
+
+# ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# Don't execute when in dev container
+
+
+if [[ -z "$REMOTE_CONTAINERS" && -z "$CODESPACES" && -z "$DEVCONTAINER_TYPE" ]]; then
+  export GPG_TTY="$(tty)"
+  unset SSH_AGENT_PID
+
+  if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  fi
+
+  gpgconf --launch gpg-agent
+  gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
+
+fi
+
+# ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~
+
+set -o vi
+
+export VISUAL=nvim
+export EDITOR=nvim
+export TERM="tmux-256color"
+
+export BROWSER="brave"
+
+# Directories
+
+export REPOS="$HOME/Repos"
+export GITUSER="dvogeldev"
+export GHREPOS="$REPOS/github.com/$GITUSER"
+# export DOTFILES="$HOME/"
+export ZETTELKASTEN="$HOME/Zettelkasten"
+export ZDOTDIR="$HOME/.config/zsh"
+
+setopt extended_glob null_glob
+
+autoload -U colors && colors
+setopt autocd   # Automatically cd into typed directories
+
+HISTFILE="$HOME/.cache/zsh/history" 
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+
+
+# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~
+
+eval "$(starship init zsh)"
+
+# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~
+
+source $ZDOTDIR/aliases
+
+eval "$(zoxide init zsh)" # Zoxide support
+eval "$(atuin init zsh)" # Atuin support

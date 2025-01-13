@@ -96,3 +96,5 @@ alias ssr='systemctl reboot'
 # Chezmoi
 alias ca='chezmoi add'
 alias ccd='chezmoi cd'
+alias cm='chezmoi manage'
+alias cap='chezmoi apply'

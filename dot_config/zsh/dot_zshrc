@@ -42,6 +42,7 @@ if [ ! -d "$HOME/.config/zsh/zplug" ]; then
   curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | ZPLUG_HOME=$HOME/.config/zsh/zplug zsh
 fi
 
+
 # Set ZPLUG_HOME to the zplug installation directory.
 export ZPLUG_HOME="$HOME/.config/zsh/zplug"
 # Source the zplug initialization script.
@@ -65,6 +66,11 @@ bindkey -v
 
 # Set up incremental history search with Ctrl+R.
 bindkey "^R" history-incremental-search-backward
+
+# Check if the directory exists before setting env var 
+if [ ! -d "$HOME/Zettelkasten" ]; then
+  mkdir -p "$HOME/Zettelkasten"
+fi
 
 # ~~~~~~~~~~~~~~~ Interactive-Specific Variables ~~~~~~~~~~
 # Variables that are primarily useful in interactive sessions.

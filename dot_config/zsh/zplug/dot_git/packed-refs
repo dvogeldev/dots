@@ -1,0 +1,34 @@
+# pack-refs with: peeled fully-peeled sorted 
+2bc269b0bf15640d284ab9a3104c9a3b7a1560fd refs/remotes/origin/add-package-json
+cc1bb6e4185e8b649804e2c21d21988d67c1e300 refs/remotes/origin/feature/add-release-script
+a673087ff9d50776193f08595572e914d466ae51 refs/remotes/origin/fix-440
+57115de206ff5a350eda1105dfd327c8f8c5bedf refs/remotes/origin/fix-447
+f6a8fafe972764aa71afffd49ab1cf41759b92a4 refs/remotes/origin/improve-from-gh-r
+64b6cbeb171948e5b388a9b4fb639ac0eb5589a2 refs/remotes/origin/issue-template
+ac6c2a3e9eea6a488d96d98c752ef887e7d5aae3 refs/remotes/origin/master
+0811cbacc3034af23ac37aeec24cee99bf4456d9 refs/remotes/origin/minimal-improve
+a6e9f1c0fc08836fcf4b590bc6544c63b8465c34 refs/remotes/origin/priority-tag
+78cfe440ec6018e9d9d02cbfe6f14d6784c32c84 refs/remotes/origin/v1
+b32a7b44d81a46d5223e7a13f4fe53b5a799a912 refs/remotes/origin/v2
+df26bbc479fcbd2b4878c916cdb2eaad945f866f refs/remotes/origin/v2.4.2
+b8166f86c35177056156784581dd6dceb5b00333 refs/tags/2.0.0
+^593348e0d602bfbdf5f5027458a213133377b45b
+057abca390acd633e5569ae17b3063dcc24e05fb refs/tags/2.1.0
+^48d772875863b31a7edae2d5b2c91a7c448b7514
+d27631d24656f8d045137a1d72fb5c9c209ccfe1 refs/tags/2.2.0
+df96aeb19c732227bba0ba353935f6499fe3e8e1 refs/tags/2.2.1
+^b096fc0d4b60a54a0a61808a03e3b385f8c7f78b
+10bf4ad5db7a2c2b07ec6ba7f47e2ec141f098d1 refs/tags/2.2.2
+^451eafc2bf3955b8e4eb77551e391d370af60114
+602e256c7fb16e0aa29e48045a17b9f6a8cffc47 refs/tags/2.2.3
+^210c05e6317b83b326f6efd517532cc05030de2f
+b1ae3ff486ef760b5000b2303a0dfdf909ad98fe refs/tags/2.2.4
+^1c27fc2c5ddff3168b081329e822f2d6b5adb7e4
+f7a967f60ab8189c8e0018e8a0fe268ea3e54821 refs/tags/2.3.0
+0d61f4749580a3625f7980db1910016daf9c9938 refs/tags/2.3.1
+318eb9a50daf6f114269d359227778a3e7d2b1a6 refs/tags/2.3.2
+3cf3408c6feb1f6f04e4e050cae8fb85c641cae0 refs/tags/2.3.3
+296645a9909f7b3fded7c2548ed744a8b25d70ea refs/tags/2.3.4
+4ae482d435c60ee0907c7a76f967a898b0529175 refs/tags/2.4.0
+73b71c483c302b742c73b0199361aaa99c80dde0 refs/tags/2.4.1
+8f14b4850d8e410f00db92afcd87b88c0c90f771 refs/tags/2.4.2

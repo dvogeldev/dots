@@ -1,0 +1,36 @@
+
+# Ignore compiled files and caches
+*.zwc
+.cache/
+
+# Ignore history files (personal and dynamic)
+.history
+.history.*
+
+# Ignore SSH and GPG agent-specific settings
+.ssh/
+.gpg/
+
+# Ignore environment-specific and runtime files
+.zcompdump*
+.zsh_sessions/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore plugin manager cache and downloaded files
+zplug/.cache/
+zplug/repos/
+zplug/log/
+
+# Ignore starship prompt configuration cache
+.starship/cache/
+
+# Ignore any local overrides
+.local.*
+
+# Ignore Atuin database (if used)
+.atuin/
+atuin.sqlite

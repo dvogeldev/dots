@@ -1,68 +1,94 @@
-
 # ~~~~~~~~~~~~~~~ Interactive shell ~~~~~~~~~~
-# Ensure Zsh is configured as the interactive shell
-
+# Ensure Zsh is configured as the interactive shell. This flag prevents
+# execution of unnecessary commands in non-interactive sessions.
 [[ -o interactive ]] && export ZSH_INTERACTIVE=true
 
 # ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-# Don't execute when in dev container
-
-
+# Configure SSH and GPG settings unless running in a dev container environment.
 if [[ -z "$REMOTE_CONTAINERS" && -z "$CODESPACES" && -z "$DEVCONTAINER_TYPE" ]]; then
+  # Set the TTY for GPG to enable passphrase prompts.
   export GPG_TTY="$(tty)"
+  # Unset SSH_AGENT_PID to ensure compatibility with gpg-agent.
   unset SSH_AGENT_PID
-
   if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    # Set SSH_AUTH_SOCK to the gpg-agent's SSH socket.
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
   fi
-
-  gpgconf --launch gpg-agent
-  gpg-connect-agent updatestartuptty /bye > /dev/null 2>&1
-
 fi
 
-# ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~
+# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~
+# Source an external aliases file for user-defined shortcuts.
+if [ -f "$HOME/.config/zsh/aliases.zsh" ]; then
+  source "$HOME/.config/zsh/aliases.zsh"
+fi
 
-set -o vi
+# ~~~~~~~~~~~~~~~ Starship Prompt ~~~~~~~~~~~~
+# Initialize the starship prompt, a cross-shell prompt for customization.
+eval "$(starship init zsh)"
 
-export VISUAL=nvim
-export EDITOR=nvim
+# ~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~
+# Enable zoxide, a smarter `cd` command for faster directory navigation.
+eval "$(zoxide init zsh)"
+
+# ~~~~~~~~~~~~~~~ Atuin History ~~~~~~~~~~~~~~
+# Initialize atuin, an advanced shell history replacement with search and sync features.
+eval "$(atuin init zsh)"
+
+# ~~~~~~~~~~~~~~~ zplug Setup ~~~~~~~~~~~~~~~~~~
+# Ensure zplug, a minimalist plugin manager for Zsh, is installed.
+if [ ! -d "$HOME/.config/zsh/zplug" ]; then
+  mkdir -p "$HOME/.config/zsh/zplug"
+  # Download and install zplug into the specified directory.
+  curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | ZPLUG_HOME=$HOME/.config/zsh/zplug zsh
+fi
+
+# Set ZPLUG_HOME to the zplug installation directory.
+export ZPLUG_HOME="$HOME/.config/zsh/zplug"
+# Source the zplug initialization script.
+source "$ZPLUG_HOME/init.zsh"
+
+# Load useful plugins with zplug.
+zplug "zsh-users/zsh-syntax-highlighting", defer:2 # Syntax highlighting for commands.
+zplug "zsh-users/zsh-autosuggestions", defer:2    # Command autosuggestions based on history.
+
+# Install missing plugins if not already installed.
+if ! zplug check --verbose; then
+  zplug install
+fi
+
+# Load all the specified plugins.
+zplug load
+
+# ~~~~~~~~~~~~~~~ Key Bindings ~~~~~~~~~~~~~~~
+# Enable vi keybindings for modal editing in the terminal.
+bindkey -v
+
+# Set up incremental history search with Ctrl+R.
+bindkey "^R" history-incremental-search-backward
+
+# ~~~~~~~~~~~~~~~ Interactive-Specific Variables ~~~~~~~~~~
+# Variables that are primarily useful in interactive sessions.
+export EDITOR="nvim" # Set the default text editor to Neovim.
+export VISUAL="nvim" # Set the visual editor to Neovim.
 export TERM="tmux-256color"
-
 export BROWSER="brave"
-
 # Directories
-
 export REPOS="$HOME/Repos"
 export GITUSER="dvogeldev"
 export GHREPOS="$REPOS/github.com/$GITUSER"
 # export DOTFILES="$HOME/"
 export ZETTELKASTEN="$HOME/Zettelkasten"
-export ZDOTDIR="$HOME/.config/zsh"
 
-setopt extended_glob null_glob
+# ~~~~~~~~~~~~~~~ Performance ~~~~~~~~~~~~~~~~
+# Improve performance and user experience for completions.
+zstyle ':completion:*' rehash true # Automatically rehash commands.
+zstyle ':completion:*' menu select # Enable menu-based completion.
 
-autoload -U colors && colors
-setopt autocd   # Automatically cd into typed directories
+# Limit the size of the shell history.
+HISTSIZE=10000 # Number of commands to keep in memory.
+SAVEHIST=10000 # Number of commands to save to the history file.
+HISTFILE="$HOME/.config/zsh/history" # Location of the history file.
 
-HISTFILE="$HOME/.cache/zsh/history" 
-HISTSIZE=10000
-SAVEHIST=10000
+# Optimize completion system for better performance.
+autoload -Uz compinit && compinit -C
 
-setopt HIST_IGNORE_SPACE
-setopt HIST_IGNORE_DUPS
-setopt SHARE_HISTORY
-
-
-# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~
-
-eval "$(starship init zsh)"
-
-# ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~
-
-source $ZDOTDIR/aliases
-
-eval "$(zoxide init zsh)" # Zoxide support
-eval "$(atuin init zsh)" # Atuin support

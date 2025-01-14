@@ -6,3 +6,4 @@ if [[ $(grep -E "^(ID|NAME)=" /etc/os-release | grep -Eq "ubuntu|fedora")$? == 0
 fi
 
 export XDG_CONFIG_HOME="$HOME"/.config
+export ZDOTDIR="$HOME"/.config/zsh

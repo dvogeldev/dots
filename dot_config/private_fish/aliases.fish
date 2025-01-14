@@ -18,8 +18,9 @@ alias fm yazi
 alias cd z
 
 # Edit Configs
-alias ea 'nvim ~/.config/fish/aliases.fish'
+alias ea 'nvim ~/.config/zsh/aliases.fish'
 alias ef 'nvim ~/.config/fish/config.fish'
+alias ez 'nvim ~/.config/zsh/.zshrc'
 
 # Vim and Emacs
 alias v nvim

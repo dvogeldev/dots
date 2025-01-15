@@ -6,4 +6,5 @@ return {
     url_format = "git@github.com:%s.git",
   },
   colorscheme = "catppuccin-mocha",
+  termguicolors = true,
 }

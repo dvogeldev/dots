@@ -28,7 +28,10 @@ eval "$(starship init zsh)"
 
 # ~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~
 # Enable zoxide, a smarter `cd` command for faster directory navigation.
-eval "$(zoxide init zsh)"
+zoxide_init() {
+  eval "$(zoxide init zsh)"
+  unfunction zoxide_init
+}
 
 # ~~~~~~~~~~~~~~~ Atuin History ~~~~~~~~~~~~~~
 # Initialize atuin, an advanced shell history replacement with search and sync features.
@@ -49,8 +52,8 @@ export ZPLUG_HOME="$HOME/.config/zsh/zplug"
 source "$ZPLUG_HOME/init.zsh"
 
 # Load useful plugins with zplug.
-zplug "zsh-users/zsh-syntax-highlighting", defer:2 # Syntax highlighting for commands.
 zplug "zsh-users/zsh-autosuggestions", defer:2    # Command autosuggestions based on history.
+zplug "zsh-users/zsh-syntax-highlighting", defer:2 # Syntax highlighting for commands.
 
 # Install missing plugins if not already installed.
 if ! zplug check --verbose; then
@@ -76,7 +79,21 @@ fi
 # Variables that are primarily useful in interactive sessions.
 export EDITOR="nvim" # Set the default text editor to Neovim.
 export VISUAL="nvim" # Set the visual editor to Neovim.
-export TERM="tmux-256color"
+if [ -n "$TMUX" ]; then
+  export TERM="tmux-256color"
+else
+  if [ -e "/dev/pts/0" ]; then
+    export TERM="xterm-256color"
+  else
+    export TERM ="linux"
+  fi 
+fi 
+# For NVIDIA-specific environments, you might want to add:
+if [ -f "/proc/driver/nvidia/version" ]; then
+    # NVIDIA driver is present
+    export COLORTERM="truecolor"  # Enable 24-bit color support
+fi
+
 export BROWSER="brave"
 # Directories
 export REPOS="$HOME/Repos"
@@ -87,6 +104,9 @@ export ZETTELKASTEN="$HOME/Zettelkasten"
 
 # ~~~~~~~~~~~~~~~ Performance ~~~~~~~~~~~~~~~~
 # Improve performance and user experience for completions.
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/.zcompcache"
 zstyle ':completion:*' rehash true # Automatically rehash commands.
 zstyle ':completion:*' menu select # Enable menu-based completion.
 
@@ -96,5 +116,22 @@ SAVEHIST=10000 # Number of commands to save to the history file.
 HISTFILE="$HOME/.config/zsh/history" # Location of the history file.
 
 # Optimize completion system for better performance.
-autoload -Uz compinit && compinit -C
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file
+
+# Reduce startup time
+skip_global_compinit=1
+
+zmodload zsh/zprof
+# Add at the end of file:
+# zprof  # Uncomment to see startup profiling

@@ -3,3 +3,11 @@ ll
 v .zshrc
 v .zshrc
 exit
+exit
+echo $TERM
+exit
+echo $PATH
+bash
+exit
+echo $HISTFILE
+exit

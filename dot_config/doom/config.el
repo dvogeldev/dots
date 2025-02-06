@@ -46,19 +46,13 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
 
-(setq doom-font (font-spec :family "GeistMono Nerd Font" :size 18)
+(setq doom-font (font-spec :family "Pragmasevka Nerd Font" :size 18)
       doom-variable-pitch-font (font-spec :family "Poppins" :size 18)
-      doom-big-font (font-spec :family "GeistMono Nerd Font" :size 54))
+      doom-big-font (font-spec :family "Pragmasevka Nerd Font" :size 54))
 
 ;; Allow mixed fonts in a buffer.
-;; (add-hook! 'org-mode-hook #'mixed-pitch-mode)
-(add-hook! 'org-mode-hook
-           markdown-mode-hook)
-        #'mixed-pitch-mode)
-
-(custom-set-faces!
-  '(font-lock-comment-face :slant italic)
-  '(font-lock-keyword-face :slant italic))
+(add-hook 'org-mode-hook #'mixed-pitch-mode)
+(add-hook 'markdown-mode-hook #'mixed-pitch-mode)
 
 (setq epg-gpg-program "/usr/bin/gpg")
 ; (setq doom-theme 'catppuccin)
@@ -95,7 +89,10 @@
    '(treemacs-directory-face ((t (:inherit variable-pitch))))
    '(treemacs-file-face ((t (:inherit variable-pitch))))))
 
+;; Set up the primary Org directory
 (setq org-directory "~/org")
+
+;; Org Pretty
 (setq org-ellipsis " ▾")
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(g)" "DONE(d)")))
@@ -107,96 +104,20 @@
   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
   '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
 )
-(setq org-agenda-files '("~/org/"))
-(setq org-agenda-custom-commands
-      '(("n" "My Weekly Agenda"
-         ((agenda "" nil)
-          (todo "DOING" nil)
-          (todo "TODO" nil)
-          (todo "DONE" nil))
-         nil)))
-(add-hook 'org-mode-hook
-            (lambda ()
-              (define-key org-mode-map (kbd "s-i") 'org-clock-in)
-              (define-key org-mode-map (kbd "s-o") 'org-clock-out)
-              (define-key org-mode-map (kbd "s-d") 'org-todo)))
-(with-eval-after-load 'org-agenda
-  ;;(define-key org-mode-map (kbd "s-p") 'org-pomodoro)
-  (setq org-agenda-custom-commands
-        '(("n" "My Weekly Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (todo "TODO" nil)
-            (todo "DONE" nil))
-           nil)
-          ("p" "Pomodoro Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (org-pomodoro))
-           nil)))
 
-(setq org-download-screenshot-method "gnome-screenshot -a -f $s"))
-
-;;(after org-pomodoro
-;;  (setq org-pomodoro-length 25)
-;;  (setq org-pomodoro-short-break-length 5)
-;;  (setq org-pomodoro-long-break-length 15)
-;;  (setq org-pomodoro-format "%s")
-;;  (setq org-pomodoro-timer-set-hook
-;;        (lambda ()
-;;          (message "Pomodoro started")))
-;;  (setq org-pomodoro-timer-finished-hook
-;;        (lambda ()
-;;          (message "Pomodoro finished"))))
-  ;;(map :leader
-   ;;     (:prefix-map ("y" . "pomodoro")
-    ;;      :desc "Start Pomodoro" "s" #'org-pomodoro
-     ;;     :desc "Stop Pomodoro" "q" #'org-pomodoro-kill
-      ;;    :desc "Pause Pomodoro" "p" #'org-pomodoro-pause
-       ;;   :desc "Resume Pomodoro" "r" #'org-pomodoro-resume)))
-
-;; Configuration for Denote with specific directories for notes and j)ournal
-(use-package denote
+(use-package! denote
   :after org
-  :custom
-  (denote-directory (expand-file-name "~/Documents/notes"))
+  :commands (denote-create denote-link denote-rename-file)
+  :init
+  (setq denote-directory "~/notes")
+  (setq denote-known-keywords
+        '(("Emacs" . ?e) ("Doom" . ?d)("PKM" . ?p)))
+  (setq denote-infer-keywords t)
   :config
-  (setq denote-known-keywords '("project" "documentation" "emacs" "development")
-        denote-file-type nil ; Org is the default, set to 'markdown for markdown files
-        denote-prompts '(title keywords)
-        denote-sort-keywords t
-        denote-infer-keywords t
-        denote-link-backlinks-display-buffer-action t))
-
-  ;; Keybindings
-  (map! :leader
-        :desc "Create a new Denote note" "d n" #'denote
-        :desc "Open or create Denote file" "d f" #'denote-open-or-create
-        :desc "Denote date" "d d" #'denote-date
-        :desc "Search Denote notes" "d s" #'denote-search
-        :desc "Link Denote notes" "d l" #'denote-link
-        :desc "View Denote backlinks" "d b" #'denote-backlinks
-        :desc "Rename Denote file" "d r" #'denote-rename-file)
-
-(after! org
-  (setq org-capture-templates
-        '(("s" "System KB" entry
-           (file+headline "~/Documents/notes/system.org" "System Knowledge Base")
-           "* %^{Title}\n:PROPERTIES
-                      :ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1)
-
-          ("p" "Project Note" entry
-           (file+headline "~/Local Sites/%(read-string \"Project name: \")/app/public/docs/project.org" "Project Notes")
-           "* %^{Title}\n:PROPERTIES:\n:ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1
-           :immediate-finish t)
-
-          ("t" "Topic for Further Research" entry
-           (file+headline "~/Documents/notes/research.org" "Topics for Further Research")
-           "* %^{Title}\n:PROPERTIES:\n:ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1
-           :immediate-finish t))))
+  ;; (map! :leader
+  ;;    :desc "Create a new Denote note"
+  ;;    "n d" #'denote-create)
+  )
 
 (setenv "dvpc" "/ssh:david@192.168.1.210#5784:")
 (setenv "dvtp" "/ssh:david@192.168.1.205#5784:")

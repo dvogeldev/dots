@@ -15,7 +15,6 @@
 - [[#treemacs][Treemacs]]
 - [[#org-mode][Org Mode]]
 - [[#denote][Denote]]
-- [[#org-capture-templates-for-denote][Org Capture Templates for Denote]]
 - [[#tramp][Tramp]]
 - [[#frame-management][Frame Management]]
 - [[#image-viewer][Image viewer]]
@@ -110,19 +109,13 @@ You can also use =M-x auto-package-update-now= to update right now!
 
 #+BEGIN_SRC emacs-lisp
 
-(setq doom-font (font-spec :family "GeistMono Nerd Font" :size 18)
+(setq doom-font (font-spec :family "Pragmasevka Nerd Font" :size 18)
       doom-variable-pitch-font (font-spec :family "Poppins" :size 18)
-      doom-big-font (font-spec :family "GeistMono Nerd Font" :size 54))
+      doom-big-font (font-spec :family "Pragmasevka Nerd Font" :size 54))
 
 ;; Allow mixed fonts in a buffer.
-;; (add-hook! 'org-mode-hook #'mixed-pitch-mode)
-(add-hook! 'org-mode-hook
-           markdown-mode-hook)
-        #'mixed-pitch-mode)
-
-(custom-set-faces!
-  '(font-lock-comment-face :slant italic)
-  '(font-lock-keyword-face :slant italic))
+(add-hook 'org-mode-hook #'mixed-pitch-mode)
+(add-hook 'markdown-mode-hook #'mixed-pitch-mode)
 #+end_src
 
 * GPG Agent
@@ -131,6 +124,7 @@ You can also use =M-x auto-package-update-now= to update right now!
 ; (setq doom-theme 'catppuccin)
 ; (setq catppuccin-flavor 'macchiato)
 #+end_src
+
 * Modus Themes
 Highly customizable
 #+begin_src emacs-lisp
@@ -177,7 +171,10 @@ File and project explorer
 * Org Mode
 Setting the font sizes for each header level in Org mode.
 #+begin_src emacs-lisp
+;; Set up the primary Org directory
 (setq org-directory "~/org")
+
+;; Org Pretty
 (setq org-ellipsis " ▾")
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(g)" "DONE(d)")))
@@ -189,171 +186,24 @@ Setting the font sizes for each header level in Org mode.
   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
   '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
 )
-(setq org-agenda-files '("~/org/"))
-(setq org-agenda-custom-commands
-      '(("n" "My Weekly Agenda"
-         ((agenda "" nil)
-          (todo "DOING" nil)
-          (todo "TODO" nil)
-          (todo "DONE" nil))
-         nil)))
-(add-hook 'org-mode-hook
-            (lambda ()
-              (define-key org-mode-map (kbd "s-i") 'org-clock-in)
-              (define-key org-mode-map (kbd "s-o") 'org-clock-out)
-              (define-key org-mode-map (kbd "s-d") 'org-todo)))
-(with-eval-after-load 'org-agenda
-  ;;(define-key org-mode-map (kbd "s-p") 'org-pomodoro)
-  (setq org-agenda-custom-commands
-        '(("n" "My Weekly Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (todo "TODO" nil)
-            (todo "DONE" nil))
-           nil)
-          ("p" "Pomodoro Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (org-pomodoro))
-           nil)))
 
-(setq org-download-screenshot-method "gnome-screenshot -a -f $s"))
-
-;;(after org-pomodoro
-;;  (setq org-pomodoro-length 25)
-;;  (setq org-pomodoro-short-break-length 5)
-;;  (setq org-pomodoro-long-break-length 15)
-;;  (setq org-pomodoro-format "%s")
-;;  (setq org-pomodoro-timer-set-hook
-;;        (lambda ()
-;;          (message "Pomodoro started")))
-;;  (setq org-pomodoro-timer-finished-hook
-;;        (lambda ()
-;;          (message "Pomodoro finished"))))
-  ;;(map :leader
-   ;;     (:prefix-map ("y" . "pomodoro")
-    ;;      :desc "Start Pomodoro" "s" #'org-pomodoro
-     ;;     :desc "Stop Pomodoro" "q" #'org-pomodoro-kill
-      ;;    :desc "Pause Pomodoro" "p" #'org-pomodoro-pause
-       ;;   :desc "Resume Pomodoro" "r" #'org-pomodoro-resume)))
 #+end_src
-(setq org-directory "~/org")
-(setq org-ellipsis " ▾")
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "DOING(g)" "DONE(d)")))
-
-(custom-set-faces
-  '(org-level-1 ((t (:inherit outline-1 :height 1.2))))
-  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
-  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
-  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
-  '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
-
-(setq org-agenda-files '("~/org/"))
-
-(setq org-agenda-custom-commands
-      '(("n" "My Weekly Agenda"
-         ((agenda "" nil)
-          (todo "DOING" nil)
-          (todo "TODO" nil)
-          (todo "DONE" nil))
-         nil)))
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map (kbd "s-i") 'org-clock-in)
-            (define-key org-mode-map (kbd "s-o") 'org-clock-out)
-            (define-key org-mode-map (kbd "s-d") 'org-todo)))
-
-(with-eval-after-load 'org-agenda
-  (setq org-agenda-custom-commands
-        '(("n" "My Weekly Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (todo "TODO" nil)
-            (todo "DONE" nil))
-           nil)
-          ("p" "Pomodoro Agenda"
-           ((agenda "" nil)
-            (todo "DOING" nil)
-            (org-pomodoro))
-           nil))))
-
-(setq org-download-screenshot-method "gnome-screenshot -a -f $s")
-
-;; Uncomment and configure the following if you are using org-pomodoro
-;; (with-eval-after-load 'org-pomodoro
-;;   (setq org-pomodoro-length 25)
-;;   (setq org-pomodoro-short-break-length 5)
-;;   (setq org-pomodoro-long-break-length 15)
-;;   (setq org-pomodoro-format "%s")
-;;   (setq org-pomodoro-timer-set-hook
-;;         (lambda ()
-;;           (message "Pomodoro started")))
-;;   (setq org-pomodoro-timer-finished-hook
-;;         (lambda ()
-;;           (message "Pomodoro finished"))))
-
-;; If you have a custom leader key setup, you can add keybindings for org-pomodoro like this:
-;; (map! :leader
-;;       (:prefix ("y" . "pomodoro")
-;;        :desc "Start Pomodoro" "s" #'org-pomodoro
-;;        :desc "Stop Pomodoro" "q" #'org-pomodoro-kill
-;;        :desc "Pause Pomodoro" "p" #'org-pomodoro-pause
-;;        :desc "Resume Pomodoro" "r" #'org-pomodoro-resume))
-
 * Denote
 #+begin_src emacs-lisp
-;; Configuration for Denote with specific directories for notes and j)ournal
-(use-package denote
+(use-package! denote
   :after org
-  :custom
-  (denote-directory (expand-file-name "~/Documents/notes"))
+  :commands (denote-create denote-link denote-rename-file)
+  :init
+  (setq denote-directory "~/notes")
+  (setq denote-known-keywords
+        '(("Emacs" . ?e) ("Doom" . ?d)("PKM" . ?p)))
+  (setq denote-infer-keywords t)
   :config
-  (setq denote-known-keywords '("project" "documentation" "emacs" "development")
-        denote-file-type nil ; Org is the default, set to 'markdown for markdown files
-        denote-prompts '(title keywords)
-        denote-sort-keywords t
-        denote-infer-keywords t
-        denote-link-backlinks-display-buffer-action t))
-
-  ;; Keybindings
-  (map! :leader
-        :desc "Create a new Denote note" "d n" #'denote
-        :desc "Open or create Denote file" "d f" #'denote-open-or-create
-        :desc "Denote date" "d d" #'denote-date
-        :desc "Search Denote notes" "d s" #'denote-search
-        :desc "Link Denote notes" "d l" #'denote-link
-        :desc "View Denote backlinks" "d b" #'denote-backlinks
-        :desc "Rename Denote file" "d r" #'denote-rename-file)
-
+  ;; (map! :leader
+  ;;    :desc "Create a new Denote note"
+  ;;    "n d" #'denote-create)
+  )
 #+end_src
-
-* Org Capture Templates for Denote
-Define the capture templates for system knowledge base, project notes, and topics for further research in your =config.el= file:
-
-#+begin_src emacs-lisp
-(after! org
-  (setq org-capture-templates
-        '(("s" "System KB" entry
-           (file+headline "~/Documents/notes/system.org" "System Knowledge Base")
-           "* %^{Title}\n:PROPERTIES
-                      :ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1)
-
-          ("p" "Project Note" entry
-           (file+headline "~/Local Sites/%(read-string \"Project name: \")/app/public/docs/project.org" "Project Notes")
-           "* %^{Title}\n:PROPERTIES:\n:ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1
-           :immediate-finish t)
-
-          ("t" "Topic for Further Research" entry
-           (file+headline "~/Documents/notes/research.org" "Topics for Further Research")
-           "* %^{Title}\n:PROPERTIES:\n:ID: %(denote-create-note)\n:END:\n\n%?"
-           :empty-lines 1
-           :immediate-finish t))))
-#+end_src
-
 
 * Tramp
 Unfortunately, when connecting to remote machines Tramp can be a wee pit picky with the prompt format. Let’s try to get Bash, and be a bit more permissive with prompt recognition.
@@ -465,42 +315,42 @@ Useful for chatgpt copy(markdown).
   (shell-command-on-region start end "pandoc -f markdown -t org" t t))
 #+end_src
 * Codeium
-#+begin_src emacs-lisp
-;; Configure Codeium
-(use-package codeium
-  :init
-  ;; Use globally or on a specific hook
-  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-  ;; Alternatively, use on a hook
-  ;; (add-hook 'python-mode-hook
-  ;;           (lambda ()
-  ;;             (setq-local completion-at-point-functions '(codeium-completion-at-point))))
-  :config
-  ;; Disable popup boxes
-  (setq use-dialog-box nil)
-  ;; Optionally set API key (do not hardcode in config files for security reasons)
-  ;; (setq codeium/metadata/api_key "your-api-key-here")
-  ;; Get Codeium status in the modeline
-  (setq codeium-mode-line-enable (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
-  (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
+ #+begin_src emacs-lisp
+ ;; Configure Codeium
+ (use-package codeium
+   :init
+   ;; Use globally or on a specific hook
+   (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+   ;; Alternatively, use on a hook
+   ;; (add-hook 'python-mode-hook
+   ;;           (lambda ()
+   ;;             (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+   :config
+   ;; Disable popup boxes
+   (setq use-dialog-box nil)
+   ;; Optionally set API key (do not hardcode in config files for security reasons)
+   ;; (setq codeium/metadata/api_key "your-api-key-here")
+   ;; Get Codeium status in the modeline
+   (setq codeium-mode-line-enable (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
+   (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
 
-  ;; Limit the string sent to Codeium for better performance
-  (defun my-codeium/document/text ()
-    (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
-  (defun my-codeium/document/cursor_offset ()
-    (codeium-utf8-byte-length (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
-  (setq codeium/document/text 'my-codeium/document/text)
-  (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
+   ;; Limit the string sent to Codeium for better performance
+   (defun my-codeium/document/text ()
+     (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
+   (defun my-codeium/document/cursor_offset ()
+     (codeium-utf8-byte-length (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
+   (setq codeium/document/text 'my-codeium/document/text)
+   (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
 
-;; If you want multiple completion backends, use cape
-;; (use-package cape
-;;   :after minemacs
-;;   :config
-;;   (add-hook 'python-mode-hook
-;;             (lambda ()
-;;               (setq-local completion-at-point-functions
-;;                           (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point))))))
-#+end_src
+ ;; If you want multiple completion backends, use cape
+ ;; (use-package cape
+ ;;   :after minemacs
+ ;;   :config
+ ;;   (add-hook 'python-mode-hook
+ ;;             (lambda ()
+ ;;               (setq-local completion-at-point-functions
+ ;;                           (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point))))))
+ #+end_src
 
 * Corfu
 #+begin_src emacs-lisp
